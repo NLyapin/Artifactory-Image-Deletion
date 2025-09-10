@@ -1,0 +1,25 @@
+{
+  "files": [
+    {
+      "aql": {
+        "items.find": {
+          "repo": "example",
+          "$or": [
+            {
+              "type": "file",
+              "name": "manifest.json",
+              "path": {"$match": "example/folder/*"},
+              "stat.downloaded": {"$before": "10d"}
+            },
+            {
+              "type": "file",
+              "name": {"$match": "sha256__*"},
+              "path": {"$match": "example/folder/*"},
+              "stat.downloaded": {"$before": "10d"}
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
